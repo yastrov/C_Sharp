@@ -20,4 +20,9 @@ public class MyClass: IDisposable
         Dispose(true);
         GC.SuppressFinalize(this);
     }
+
+    ~MyClass()
+    {
+        Dispose(false);
+    }
 }

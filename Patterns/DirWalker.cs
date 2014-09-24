@@ -35,8 +35,9 @@ namespace DirWalkNamespace {
                 foreach (string currentFile in txtFiles)
                 {
                     fileName = currentFile.Substring(sourceDirectory.Length + 1);
-                    if(OnTakeFile != null)
-                        OnTakeFile(fileName);
+                    if(OnTakeFile == null)
+                        throw new NotImplementedException("DirectoryWalker: OnTakeFile event not implemented!");
+                    OnTakeFile(fileName);
                 }
             }
             catch (Exception e)
