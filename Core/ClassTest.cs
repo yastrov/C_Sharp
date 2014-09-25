@@ -20,7 +20,7 @@ namespace ClassTest
     }
 
     // sealed class You can't inherit. 
-    public class A : IMyInterface
+    public class A : IMyInterface, IComparable<A>
     {
         public readonly int ReadonlyValue = 1; /*Вычисляется на стадии выполнения*/
         public const int ConstValue = 1; /*Вычисляетяс на стадии компиляциия*/
@@ -61,6 +61,22 @@ namespace ClassTest
             {
                 return Int32.Parse(index);
             }
+            set
+            {
+                // vars: index and value in this scope
+                this._x = value;
+            }
+        }
+
+        // IComparable<T>
+        public int CompareTo(A obj)
+        {
+            if (this._x > obj.X)
+                return 1;
+            if (this._x < obj.X)
+                return -1;
+            else
+                return 0;
         }
     }
 
