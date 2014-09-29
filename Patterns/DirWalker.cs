@@ -5,10 +5,53 @@ using System.Xml;
 using System.Xml.Serialization;
 
 namespace DirWalkNamespace {
-    public class DirectoryWalker {
+    public class TakeFileEventArgs : System.EventArgs
+    {
+        public readonly string FileName;
+        public TakeFileEventArgs(string FileName)
+        {
+            this.FileName = FileName;
+        }
+    }
 
-        public delegate void ProcessFile(string fileName);
-        public event ProcessFile OnTakeFile;
+    public delegate void OnTakeFileEventHandler<TEventArgs>(object source, TEventArgs e);
+
+    public class DirectoryWalker {
+        private readonly object someEventLock = new object();
+
+        public event OnTakeFileEventHandler<TakeFileEventArgs> TakeFileEvent
+        {
+            add
+            {
+                lock (someEventLock)
+                {
+                    TakeFileEvent += value;
+                }
+            }
+            remove
+            {
+                lock (someEventLock)
+                {
+                    TakeFileEvent -= value;
+                }
+            }
+        }
+
+        protected virtual OnTakeFileEvent(TakeFileEventArgs e)
+        {
+            OnTakeFileEventHandler handler;
+            // Thread safe
+            lock(someEventLock)
+            {
+                handler = OnTakeFileEvent;
+            }
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+            else throw new NotImplementedException("DirectoryWalker: TakeFileEvent not implemented!");
+        }
+
         /*
          public void ProcessFile (string filename){}
          DirectoryWalker dW = new DirectoryWalker();
@@ -20,12 +63,7 @@ namespace DirWalkNamespace {
             ;
         }
 
-        public void Walk(string sourceDirectory, string searchPattern)
-        {
-            Walk(sourceDirectory, searchPattern, SearchOption.AllDirectories);
-        }
-
-        public void Walk(string sourceDirectory, string searchPattern, SearchOption searchOptions)
+        public void Walk(string sourceDirectory, string searchPattern, SearchOption searchOptions = SearchOption.AllDirectories)
         {
             try
             {
@@ -35,9 +73,7 @@ namespace DirWalkNamespace {
                 foreach (string currentFile in txtFiles)
                 {
                     fileName = currentFile.Substring(sourceDirectory.Length + 1);
-                    if(OnTakeFile == null)
-                        throw new NotImplementedException("DirectoryWalker: OnTakeFile event not implemented!");
-                    OnTakeFile(fileName);
+                    OnTakeFileEvent(new TakeFileEventArgs(fileName));
                 }
             }
             catch (Exception e)
