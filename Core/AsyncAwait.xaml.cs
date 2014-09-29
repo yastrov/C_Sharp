@@ -31,6 +31,24 @@ namespace ProgressTest
             InitializeComponent();
         }
         private CancellationTokenSource cancelSource;
+        // use simple lock for standart thread;
+        // ConcurrentDictionary also.
+        private readonly SemaphoreSlim _mutex = new SemaphoreSlim(1);
+        private int _value;
+
+        public static async Task TestSemaphoreSlim()
+        {
+            await _mutex.WaitAsync();
+            try
+            {
+                var oldValue = _value;
+                _value = oldValue + 1;
+            }
+            finally
+            {
+                _mutex.Release();
+            }
+        }
 
         // Best version of approach:)
         // public static Task<T> Bar() for returned type T
@@ -48,6 +66,7 @@ namespace ProgressTest
             }
         }
 
+        // Old approach
         public static Task Bar(IProgress<int> onProgressPercentChanged,
                                 CancellationToken cancellationToken)
         {
