@@ -22,7 +22,7 @@ namespace ClassTest
     // sealed class You can't inherit. 
     public class A : IMyInterface, IComparable<A>
     {
-        public readonly int ReadonlyValue = 1; /*Вычисляется на стадии выполнения*/
+        public readonly int ReadonlyValue = 1; /*Вычисляется на стадии выполнения, можно присваивать в конструкторе*/
         public const int ConstValue = 1; /*Вычисляетяс на стадии компиляциия*/
 
         private int _x = 0;
@@ -34,7 +34,14 @@ namespace ClassTest
         // Constructor
         public A() { ; }
         public A(int x) { this._x = x; }
-        ~A() { ; }
+        ~A() { ; } //Not null finalizer is bad for perfomanse.
+
+        // Преобразование пользовательского типа
+        /*Пример: int x = 1; A a = (A)x;*/
+        public static explicit operator A(int Value)
+        {
+            return new A(Value);
+        }
 
         public virtual Boolean Equals(Object obj)
         {
