@@ -22,6 +22,8 @@ namespace UsingTest
     /// <summary>
     /// http://msdn.microsoft.com/en-us/library/fs2xkftw.aspx
     /// http://msdn.microsoft.com/ru-ru/library/fs2xkftw%28v=vs.110%29.aspx
+    /// Use Dispose pattern, if you have unmanaged resource in your class
+    /// or want to have Close() method.
     /// </summary>
     class A : IDisposable {
         bool disposed = false;

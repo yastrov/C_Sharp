@@ -1,3 +1,8 @@
+/*
+This is full Dispose pattern.
+Use it, if you have unmanaged resource in your class
+or want to have Close() method.
+*/
 public class MyClass: IDisposable
 {
     private bool disposed = false;

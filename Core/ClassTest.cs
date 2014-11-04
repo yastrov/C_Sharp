@@ -51,6 +51,13 @@ namespace ClassTest
             return this._x == ((A)obj).X;
         }
 
+        /* Richter CLR via C#.
+         You shouldn’t use the C#  == operator;
+        */
+        public static Boolean ReferenceEquals(Object objA, Object objB) {
+            return (objA == objB);
+        }
+
         public void Foo()
         {
             Console.WriteLine("Foo from A.");
