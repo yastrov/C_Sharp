@@ -1,3 +1,18 @@
+/*Solution with lock may be bad! 
+Стоит почитать: http://habrahabr.ru/post/240385/
+See also: http://msdn.microsoft.com/en-us/magazine/cc163533.aspx
+
+Next Quote from links:
+В приведенном примере получаем и потокобезопасность, и «защиту»
+от NullReferenceException, и reliability (вспомним про события вроде
+DomainUnload, ProcessExit, and UnhandledException).
+
+For CER (Constrained Execution Regions).
+Replace:
+RuntimeHelpers.PrepareContractedDelegate(value);
+To:
+RunteHimelpers.PrepareDelegate(value);
+*/
 using System;
 using System.IO;
 using System.ServiceModel;
@@ -14,71 +29,46 @@ namespace DirWalkNamespace {
         }
     }
 
-    public delegate void OnTakeFileEventHandler<TEventArgs>(object source, TEventArgs e);
-
-    public class DirectoryWalker {
-        private readonly object someEventLock = new object();
-
+    class DirWalker
+    {
+        public delegate void OnTakeFileEventHandler<TEventArgs>(object source, TEventArgs e);
+        private static OnTakeFileEventHandler<TakeFileEventArgs> _takeFileEvent = delegate { };
+        private readonly object _exceptionLock = new object();
         public event OnTakeFileEventHandler<TakeFileEventArgs> TakeFileEvent
         {
             add
             {
-                lock (someEventLock)
+                if (value == null)
+                    return;
+                RuntimeHelpers.PrepareContractedDelegate(value);
+                lock (_exceptionLock)
                 {
-                    TakeFileEvent += value;
+                    _takeFileEvent += value;
                 }
             }
             remove
             {
-                lock (someEventLock)
+                lock (_exceptionLock)
                 {
-                    TakeFileEvent -= value;
+                    _takeFileEvent -= value;
                 }
             }
-        }
-
-        protected virtual OnTakeFileEvent(TakeFileEventArgs e)
-        {
-            OnTakeFileEventHandler handler;
-            // Thread safe
-            lock(someEventLock)
-            {
-                handler = OnTakeFileEvent;
-            }
-            if (handler != null)
-            {
-                handler(this, e);
-            }
-            else throw new NotImplementedException("DirectoryWalker: TakeFileEvent not implemented!");
-        }
-
-        /*
-         public void ProcessFile (string filename){}
-         DirectoryWalker dW = new DirectoryWalker();
-         dw.OnTakeFile += this.ProcessFile;
-         */
-
-        public DirectoryWalker()
-        {
-            ;
         }
 
         public void Walk(string sourceDirectory, string searchPattern, SearchOption searchOptions = SearchOption.AllDirectories)
         {
             try
             {
-                if(searchPattern == null) searchPattern = "*.*";
+                if (searchPattern == null) searchPattern = "*.*";
                 var txtFiles = Directory.EnumerateFiles(sourceDirectory, searchPattern, searchOptions);
-                string fileName = null;
                 foreach (string currentFile in txtFiles)
                 {
-                    fileName = currentFile.Substring(sourceDirectory.Length + 1);
-                    OnTakeFileEvent(new TakeFileEventArgs(fileName));
+                    _takeFileEvent(this, new TakeFileEventArgs(currentFile));
                 }
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                System.Diagnostics.Debug.WriteLine(e.Message);
             }
         }
     }
