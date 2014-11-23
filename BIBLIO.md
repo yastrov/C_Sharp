@@ -46,3 +46,5 @@
 -  [Keep Your Code Running with the Reliability Features of the .NET Framework](http://msdn.microsoft.com/en-us/magazine/cc163716.aspx)
 -  [Alex Calvo Comparing the Timer Classes in the .NET Framework Class Library](http://msdn.microsoft.com/en-us/magazine/cc164015.aspx)
 -  [Fabio Pintos How to properly convert SecureString to String](http://blogs.msdn.com/b/fpintos/archive/2009/06/12/how-to-properly-convert-securestring-to-string.aspx)
+
+-  [.NET Fiddle](https://dotnetfiddle.net/)
