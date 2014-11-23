@@ -38,10 +38,14 @@ namespace GenricTest
     {
         // Type with parametherless constructor
         // static T Max <T>(T a, T b) where T : new()
+        // AT! This is more faster than next: 
+        // static IComparable Max (IComparable a, IComparable b)
+        // And more than Struct or interface, in place of 'T'
         static T Max <T>(T a, T b) where T : IComparable<T>
         {
             return a.CompareTo(b) > 0 ? a : b;
         }
+
         static void Main(string[] args)
         {
             Console.WriteLine(Max<int>(1,4));
