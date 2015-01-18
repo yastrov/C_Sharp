@@ -29,11 +29,9 @@
 [https://bitbucket.org/hardcodet/notifyicon-wpf/](https://bitbucket.org/hardcodet/notifyicon-wpf/)
 [https://www.nuget.org/packages/Hardcodet.NotifyIcon.Wpf/](https://www.nuget.org/packages/Hardcodet.NotifyIcon.Wpf/)
 -  [https://www.nuget.org/packages/Hardcodet.Wpf.TaskbarNotification/](https://www.nuget.org/packages/Hardcodet.Wpf.TaskbarNotification/)
+-  DataBinding [http://msdn.microsoft.com/ru-ru/library/ms752039(v=vs.110).aspx](http://msdn.microsoft.com/ru-ru/library/ms752039(v=vs.110).aspx)
+-  Общие сведения о связывании данных (интересный пример дизайна!) [http://msdn.microsoft.com/ru-ru/library/ms752347(v=vs.110).aspx](http://msdn.microsoft.com/ru-ru/library/ms752347(v=vs.110).aspx) и ещё один [http://msdn.microsoft.com/ru-ru/library/ms752300(v=vs.110).aspx](http://msdn.microsoft.com/ru-ru/library/ms752300(v=vs.110).aspx)
 
-## WinForms (Attention!)
--  Привязка данных в Windows Forms (Best article) [http://rsdn.ru/article/dotnet/Data_Binding_Basics.xml](http://rsdn.ru/article/dotnet/Data_Binding_Basics.xml)
--  DataGrid Faq [http://rsdn.ru/article/dotnet/datagridfaq.xml](http://rsdn.ru/article/dotnet/datagridfaq.xml)
--  DataGridView. Новый контрол в составе Framework 2.0 [http://rsdn.ru/article/dotnet/DataGridView20.xml](http://rsdn.ru/article/dotnet/DataGridView20.xml)
 
 ## sergeyteplyakov's blog
 -  [sergeyteplyakov's "Programming stuff"](http://sergeyteplyakov.blogspot.ru/)
@@ -53,3 +51,6 @@
 -  [Fabio Pintos How to properly convert SecureString to String](http://blogs.msdn.com/b/fpintos/archive/2009/06/12/how-to-properly-convert-securestring-to-string.aspx)
 
 -  [.NET Fiddle](https://dotnetfiddle.net/)
+
+## Github projects
+-  Simple, powerful, cross-platform SQLite client and ORM [sqlite-net](https://github.com/praeclarum/sqlite-net)
