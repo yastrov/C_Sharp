@@ -13,6 +13,32 @@ namespace EncodingTestNamespace
 {
     class Program
     {
+        public static string Convert(string str)
+        {
+            Encoding srcEncodingFormat = Encoding.Default;
+            Encoding dstEncodingFormat = Encoding.GetEncoding("windows-1251");
+            byte[] originalByteString = srcEncodingFormat.GetBytes(str);
+            byte[] convertedByteString = Encoding.Convert(srcEncodingFormat,
+            dstEncodingFormat, originalByteString);
+            return dstEncodingFormat.GetString(convertedByteString);
+            //return string.Concat(convertedByteString.Select(b => "%"+b.ToString("X2")));
+        }
+
+        public static byte[] ConvertToByte(string str)
+        {
+            Encoding srcEncodingFormat = Encoding.Default;
+            Encoding dstEncodingFormat = Encoding.GetEncoding("windows-1251");
+            byte[] originalByteString = srcEncodingFormat.GetBytes(str);
+            return Encoding.Convert(srcEncodingFormat,
+            dstEncodingFormat, originalByteString);
+        }
+
+        public static string GetCurrentDefaultEncodingName()
+        {
+            var value = System.Text.Encoding.Default;
+            return value.WebName;
+        }
+
         static void WriteToFile()
         {
             using(Stream s = File.Create("buf.txt"))
