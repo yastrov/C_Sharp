@@ -55,5 +55,16 @@ namespace DiaryInfo
             }
             return info;
         }
+
+        public static IList<T> GetObjectListFromJson<T>(HttpWebResponse response)
+        {
+            if (response.StatusCode != HttpStatusCode.OK)
+                throw new WebException(response.StatusDescription);
+            DataContractJsonSerializer json = new DataContractJsonSerializer(typeof(List<T>));
+            using (Stream oStream = response.GetResponseStream())
+            {
+                return (List<T>)json.ReadObject(oStream);
+            }
+        }
     }
 }
