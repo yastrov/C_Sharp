@@ -36,5 +36,13 @@ namespace XMLTest
                 DiveIntoElement(el);
             }
         }
+
+        public string getTitle(string FileName)
+        {
+            XDocument doc = XDocument.Load(FileName);
+            XmlNamespaceManager namespaceManager = new XmlNamespaceManager(new NameTable());
+            namespaceManager.AddNamespace("xmlns", "http://www.gribuser.ru/xml/fictionbook/2.0");
+            return doc.XPathSelectElement("/xmlns:FictionBook/xmlns:description/xmlns:title-info/xmlns:book-title", namespaceManager).Value;
+        }
     }
 }
