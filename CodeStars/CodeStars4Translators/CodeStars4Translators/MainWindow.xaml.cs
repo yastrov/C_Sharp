@@ -158,9 +158,12 @@ namespace CodeStars4Translators
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Main function in Window.
+        /// </summary>
+        /// <param name="path"></param>
+        private void DoJob(string path)
         {
-            string path = @"translators.txt";
             var pairs = Helpers.LoadFromFile(path);
             var p = new Problem(pairs, "исландский", "русский");
             var result = Algorythms.UniformCostSearch(p);
@@ -171,6 +174,35 @@ namespace CodeStars4Translators
             else
             {
                 MessageBox.Show("No Solution!", "Attention!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string path = @"translators.txt";
+            DoJob(path);
+        }
+
+        private void fileDialogButton_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.DefaultExt = ".txt";
+            dlg.Filter = "Text documents (.txt)|*.txt|All Files|*.*";
+            dlg.InitialDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
+            /* Variants (варианты получения текущей директории)
+             * System.AppDomain.CurrentDomain.BaseDirectory;
+             * Environment.CurrentDirectory;
+             * Directory.GetCurrentDirectory();
+             * System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+             * System.Reflection.Assembly.GetExecutingAssembly().Location;
+             * System.Environment.GetCommandLineArgs()[0];
+             * System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+             */
+
+            Nullable<bool> result = dlg.ShowDialog();
+            if (result == true)
+            {
+                DoJob(dlg.FileName);
             }
         }
 
