@@ -32,6 +32,10 @@
 -  DataBinding [http://msdn.microsoft.com/ru-ru/library/ms752039(v=vs.110).aspx](http://msdn.microsoft.com/ru-ru/library/ms752039(v=vs.110).aspx)
 -  Общие сведения о связывании данных (интересный пример дизайна!) [http://msdn.microsoft.com/ru-ru/library/ms752347(v=vs.110).aspx](http://msdn.microsoft.com/ru-ru/library/ms752347(v=vs.110).aspx) и ещё один [http://msdn.microsoft.com/ru-ru/library/ms752300(v=vs.110).aspx](http://msdn.microsoft.com/ru-ru/library/ms752300(v=vs.110).aspx)
 
+-  "Data Binding XAML control to property in code behind" (best!) [http://codingseason.blogspot.in/2013/05/data-binding-xaml-control-to-property.html](http://codingseason.blogspot.in/2013/05/data-binding-xaml-control-to-property.html)
+-  "DataContext in WPF" (best!) [http://www.codeproject.com/Articles/321899/DataContext-in-WPF](http://www.codeproject.com/Articles/321899/DataContext-in-WPF)
+-  "Data Binding in WPF" by John Papa [en](https://msdn.microsoft.com/en-us/magazine/cc163299.aspx) [ru](https://msdn.microsoft.com/ru-ru/magazine/cc163299.aspx)
+
 
 ## sergeyteplyakov's blog
 -  [sergeyteplyakov's "Programming stuff"](http://sergeyteplyakov.blogspot.ru/)
