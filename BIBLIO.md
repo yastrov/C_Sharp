@@ -35,6 +35,7 @@
 -  "Data Binding XAML control to property in code behind" (best!) [http://codingseason.blogspot.in/2013/05/data-binding-xaml-control-to-property.html](http://codingseason.blogspot.in/2013/05/data-binding-xaml-control-to-property.html)
 -  "DataContext in WPF" (best!) [http://www.codeproject.com/Articles/321899/DataContext-in-WPF](http://www.codeproject.com/Articles/321899/DataContext-in-WPF)
 -  "Data Binding in WPF" by John Papa [en](https://msdn.microsoft.com/en-us/magazine/cc163299.aspx) [ru](https://msdn.microsoft.com/ru-ru/magazine/cc163299.aspx)
+-  [http://miteshsureja.blogspot.ru/2011/07/data-binding-in-wpf.html](http://miteshsureja.blogspot.ru/2011/07/data-binding-in-wpf.html)
 
 
 ## sergeyteplyakov's blog
