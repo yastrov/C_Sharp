@@ -12,6 +12,19 @@ namespace ConsoleApplication2
         {
             ;
         }
+
+        public int this[string propName]
+        {
+            get
+            {
+                return (int)this.GetType().GetProperty(propName).GetValue(this, null);
+            }
+            set
+            {
+                PropertyInfo propertyInfo = this.GetType().GetProperty(propName);
+                propertyInfo.SetValue(this, Convert.ChangeType(value, propertyInfo.PropertyType), null);
+            }
+        }
     }
 
     static void Main(string[] args)
