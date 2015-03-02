@@ -15,3 +15,11 @@
 Да, решение не оптимальное, хотя бы потому, что по хорошему надо использовать специальные коллекции, когда я обошёлся входящими в .NET Framework 4.5.
 
 Так же для достижения универсальности стоило бы писать свой алгоритм с помощью Generics, но мне для этого проекта можно обойтись полу-универсальным решением.:).
+
+
+## Послесловие
+
+Можно было использовать готовую библиотекту в ключающую в себя математику для поиска кратчайших путей в графе
+[http://quickgraph.codeplex.com/](http://quickgraph.codeplex.com/), и визуализировать с помощью совместимых инструментов или с помощью [http://graphsharp.codeplex.com/](http://graphsharp.codeplex.com/).
+
+Подробнее [http://karhet.blogspot.ru/2015/02/codestars-track-04.html](http://karhet.blogspot.ru/2015/02/codestars-track-04.html) [http://karhet.blogspot.ru/2015/03/graphsharp-quickgraph-codestars-track-04.html](http://karhet.blogspot.ru/2015/03/graphsharp-quickgraph-codestars-track-04.html).
