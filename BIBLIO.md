@@ -36,6 +36,8 @@
 -  "DataContext in WPF" (best!) [http://www.codeproject.com/Articles/321899/DataContext-in-WPF](http://www.codeproject.com/Articles/321899/DataContext-in-WPF)
 -  "Data Binding in WPF" by John Papa [en](https://msdn.microsoft.com/en-us/magazine/cc163299.aspx) [ru](https://msdn.microsoft.com/ru-ru/magazine/cc163299.aspx)
 -  [http://miteshsureja.blogspot.ru/2011/07/data-binding-in-wpf.html](http://miteshsureja.blogspot.ru/2011/07/data-binding-in-wpf.html)
+-  [https://code.msdn.microsoft.com/windowsdesktop/Best-ComboBox-Tutorial-5cc27f82](https://code.msdn.microsoft.com/windowsdesktop/Best-ComboBox-Tutorial-5cc27f82)
+-  ListView and GridView [https://msdn.microsoft.com/en-us/library/ms750972(v=vs.110).aspx](https://msdn.microsoft.com/en-us/library/ms750972(v=vs.110).aspx)
 
 
 ## sergeyteplyakov's blog
