@@ -12,6 +12,7 @@
 -  [http://www.asp.net/web-api](http://www.asp.net/web-api)
 -  V5 Next Example [http://habrahabr.ru/post/250009/](http://habrahabr.ru/post/250009/)
 -  [Migration](https://msdn.microsoft.com/en-us/data/jj591621.aspx)
+- EntityFramework tutrial [url](http://www.entityframeworktutorial.net/code-first/database-initialization-in-code-first.aspx)
 
 ## Dispose Pattern
 -  [Dispose pattern - Habrahabr](http://habrahabr.ru/post/129283/)
