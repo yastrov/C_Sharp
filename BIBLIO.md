@@ -7,6 +7,12 @@
 -  [Await, and UI, and deadlocks! Oh my!](http://blogs.msdn.com/b/pfxteam/archive/2011/01/13/10115163.aspx)
 -  [FAQ with Links](http://blogs.msdn.com/b/pfxteam/archive/2012/04/12/10293335.aspx)
 
+## ASP.NET
+-  [http://www.asp.net/mvc/overview/getting-started](http://www.asp.net/mvc/overview/getting-started)
+-  [http://www.asp.net/web-api](http://www.asp.net/web-api)
+-  V5 Next Example [http://habrahabr.ru/post/250009/](http://habrahabr.ru/post/250009/)
+-  [Migration](https://msdn.microsoft.com/en-us/data/jj591621.aspx)
+
 ## Dispose Pattern
 -  [Dispose pattern - Habrahabr](http://habrahabr.ru/post/129283/)
 -  [Dispose pattern - sergeyteplyakov's blog](http://sergeyteplyakov.blogspot.ru/2011/09/dispose-pattern.html)
@@ -50,12 +56,18 @@
 -  Итераторы в языке C#. [Часть 1](http://sergeyteplyakov.blogspot.com/2010/06/c-1.html) [Часть 2](http://sergeyteplyakov.blogspot.com/2010/06/c-2.html) [Часть 3](http://sergeyteplyakov.blogspot.ru/2010/06/c-3.html)
 -  [О пользовательских преобразованиях типов](http://sergeyteplyakov.blogspot.ru/2013/06/blog-post_13.html)
 
+## Guidlines
+-  Design [ru](https://msdn.microsoft.com/ru-ru/library/windows/apps/dn611856.aspx) [en](https://msdn.microsoft.com/en-us/library/windows/apps/dn611856.aspx)
+-  Sharing Contracts [url](https://msdn.microsoft.com/en-us/library/windows/apps/xaml/hh871373.aspx)
+
 ## Other
 -  [Drill Into .NET Framework Internals to See How the CLR Creates Runtime Objects](http://msdn.microsoft.com/en-us/magazine/cc163791.aspx#S6)
 -  [5 способов сравнения байотвых массивов](http://habrahabr.ru/post/214841/)
 -  [Keep Your Code Running with the Reliability Features of the .NET Framework](http://msdn.microsoft.com/en-us/magazine/cc163716.aspx)
 -  [Alex Calvo Comparing the Timer Classes in the .NET Framework Class Library](http://msdn.microsoft.com/en-us/magazine/cc164015.aspx)
 -  [Fabio Pintos How to properly convert SecureString to String](http://blogs.msdn.com/b/fpintos/archive/2009/06/12/how-to-properly-convert-securestring-to-string.aspx)
+-  Dependency property [http://habrahabr.ru/post/149835/](http://habrahabr.ru/post/149835/)
+-  Guidlines (recommendation) [https://msdn.microsoft.com/en-us/library/windows/apps/hh465465.aspx](https://msdn.microsoft.com/en-us/library/windows/apps/hh465465.aspx)
 
 -  [.NET Fiddle](https://dotnetfiddle.net/)
 
