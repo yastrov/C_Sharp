@@ -48,11 +48,13 @@ namespace ClassTest
             if (obj == null) return false;
             if (this.GetType() != obj.GetType())
                 return false;
+            // If this class is not base, use: base.Equals(obj) && Z == obj.Z
             return this._x == ((A)obj).X;
         }
 
         /* Richter CLR via C#.
          You shouldn’t use the C#  == operator;
+         AT! This overload may be critical error!!!
         */
         public static Boolean ReferenceEquals(Object objA, Object objB) {
             return (objA == objB);
@@ -60,6 +62,8 @@ namespace ClassTest
 
         public void Foo()
         {
+            // In real application, pass Console.WriteLine as Action<string>;
+            //Action<string> Foo = Console.WriteLine;
             Console.WriteLine("Foo from A.");
         }
         public virtual void Hello()

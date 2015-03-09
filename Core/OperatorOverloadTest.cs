@@ -56,16 +56,33 @@ namespace OperatorOverloadTest
 
         // Overload all or none in each region !
         #region ==, !=
+        /// https://msdn.microsoft.com/ru-ru/library/ms173147(v=vs.90).aspx
         public static bool operator ==(MyPoint obj1, MyPoint obj2)
         {
-            if ((obj1.x == obj2.x) && (obj1.y == obj2.y))
+            if (System.Object.ReferenceEquals(obj1, obj2))
+            {
+                return true;
+            }
+            if (((object)obj1 == null) || ((object)obj2 == null))
+            {
+                return false;
+            }
+            if ((obj1.X == obj2.X) && (obj1.Y == obj2.Y))
                 return true;
             return false;
         }
 
         public static bool operator !=(MyPoint obj1, MyPoint obj2)
         {
-            if ((obj1.x != obj2.x) || (obj1.y != obj2.y))
+            if (System.Object.ReferenceEquals(obj1, obj2))
+            {
+                return false;
+            }
+            if (((object)obj1 == null) || ((object)obj2 == null))
+            {
+                return false;
+            }
+            if ((obj1.X != obj2.X) && (obj1.Y != obj2.Y))
                 return false;
             return true;
         }
@@ -156,6 +173,7 @@ namespace OperatorOverloadTest
             if (obj == null) return false;
             if (this.GetType() != obj.GetType())
                 return false;
+            // If this class is not base, use: base.Equals(obj) && Z == obj.Z
             if ((this.X == ((MyPoint)obj).X )&& (this.Y == ((MyPoint)obj).Y))
                 return true;
             return false;
@@ -165,6 +183,7 @@ namespace OperatorOverloadTest
             if ((object)obj == null) return false;
             if ((this.X == obj.X) && (this.Y == obj.Y))
                 return true;
+            // If this class is not base, use: base.Equals(obj) && Z == obj.Z
             return false;
         }
         public int CompareTo(MyPoint other)
