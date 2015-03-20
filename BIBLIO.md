@@ -6,6 +6,7 @@
 -  [Производительность](http://msdn.microsoft.com/ru-ru/magazine/hh456402.aspx) [English Perfomance](http://msdn.microsoft.com/en-us/magazine/hh456402.aspx)
 -  [Await, and UI, and deadlocks! Oh my!](http://blogs.msdn.com/b/pfxteam/archive/2011/01/13/10115163.aspx)
 -  [FAQ with Links](http://blogs.msdn.com/b/pfxteam/archive/2012/04/12/10293335.aspx)
+-  Andras Nemes Async blog [http://dotnetcodr.com/task-parallel-library/](http://dotnetcodr.com/task-parallel-library/)
 
 ## ASP.NET
 -  [http://www.asp.net/mvc/overview/getting-started](http://www.asp.net/mvc/overview/getting-started)
@@ -71,6 +72,7 @@
 -  Guidlines (recommendation) [https://msdn.microsoft.com/en-us/library/windows/apps/hh465465.aspx](https://msdn.microsoft.com/en-us/library/windows/apps/hh465465.aspx)
 
 -  [.NET Fiddle](https://dotnetfiddle.net/)
+-  [http://referencesource.microsoft.com/](http://referencesource.microsoft.com/)
 
 ## Github projects
 -  Simple, powerful, cross-platform SQLite client and ORM [sqlite-net](https://github.com/praeclarum/sqlite-net)
