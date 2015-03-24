@@ -1,0 +1,72 @@
+﻿<Window x:Class="MissAndCan.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="435.075" Width="425"
+        WindowStartupLocation="CenterScreen"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Window.Resources>
+        <Style TargetType="DataGridCell">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+            <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="0,0,0,-51">
+            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" ScrollViewer.CanContentScroll="True" Width="auto">
+            <Run FontSize="16" FontWeight="Bold">Missionaries and cannibals problem and UCS search.</Run>
+                <LineBreak/>
+                Three missionaries and three cannibals are on the same side of the river.<LineBreak/>
+                Requires all pearsons to the other side.
+                <LineBreak/>In this case, the boat can withstand only two.
+                <LineBreak/>You can not leave on one side of the missionaries less than cannibals.
+            </TextBlock>
+            <Button Content="Calculate"
+                Click="StartButtoCllick"
+                HorizontalAlignment="Center"
+                IsEnabled="{Binding IsEnabled}"
+                VerticalAlignment="Top"
+                Width="75"/>
+            <DataGrid ItemsSource="{Binding Combinations}"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+
+                  HorizontalContentAlignment="Center">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="#"
+                                    Width="10"
+                                    Binding="{Binding Path=NumberOfStep}"/>
+                    <DataGridTextColumn Header="Missionaries"
+                                    Width="Auto"
+                                    Binding="{Binding Path=MissionariesLeft}">
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="ToolTip" Value="{Binding MissionariesLeft}" />
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Cannibals"
+                                        Width="Auto"
+                                    Binding="{Binding Path=CannibalsLeft}"/>
+                    <DataGridTextColumn Header="Boat on the beach"
+                                        Width="Auto"
+                                    Binding="{Binding Path=BoatStatus}"/>
+                    <DataGridTextColumn Header="Missionaries"
+                                        Width="Auto"
+                                    Binding="{Binding Path=MissionariesRight}"/>
+                    <DataGridTextColumn Header="Cannibals"
+                                        Width="Auto"
+                                    Binding="{Binding Path=CannibalsRight}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</Window>
