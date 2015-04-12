@@ -137,7 +137,8 @@ namespace WebHelperNamespace
         protected async Task<HttpWebResponse> _RequestAsync(String url, String requestMethod, byte[] content)
         {
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
-            request.ProtocolVersion = new Version(1, 0);
+            request.ProtocolVersion = HttpVersion.Version11;
+            request.KeepAlive = true;
             request.Method = requestMethod;
             if (!String.IsNullOrEmpty(this._referer))
                 request.Referer = this._referer;
@@ -174,6 +175,8 @@ namespace WebHelperNamespace
             Encoding encoding = Encoding.GetEncoding("Windows-1251");
             var urlData = Data.UrlEncode(encoding);
             byte[] ByteData = Dict.EncodeValues(encoding);
+            //
+            var uS = System.Web.HttpUtility.UrlEncode("My string.", Encoding.GetEncoding(1251));
         }
     }
 }
