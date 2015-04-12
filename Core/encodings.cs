@@ -73,7 +73,7 @@ namespace EncodingTestNamespace
             Encoding cp1252r = Encoding.GetEncoding(1251, 
                                   new EncoderReplacementFallback("*"),
                                   new DecoderReplacementFallback("*"));
-
+            var uS = System.Web.HttpUtility.UrlEncode("My string.", Encoding.GetEncoding(1251));
         }
     }
 }
