@@ -55,6 +55,27 @@ namespace MissAndCan
             }
         }
         private CancellationTokenSource cancelSource = null;
+        private int boatSize = 2;
+        public int BoatSize
+        {
+            get { return boatSize; }
+            set
+            {
+                boatSize = value;
+                NotifyPropertyChanged("BoatSize");
+            }
+        }
+        
+        private int numberOfEach = 3;
+        public int NumberOfEach
+        {
+            get { return numberOfEach; }
+            set
+            {
+                numberOfEach = value;
+                NotifyPropertyChanged("NumberOfEach");
+            }
+        }
 
         public MainWindow()
         {
@@ -78,6 +99,10 @@ namespace MissAndCan
             {
                 MessageBox.Show("Cancelled by user!", Title, MessageBoxButton.OK, MessageBoxImage.Asterisk);
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), Title, MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            }
             finally
             {
                 Cursor = Cursors.Arrow;
@@ -90,8 +115,10 @@ namespace MissAndCan
             return await Task.Run(() =>
             {
                 List<StateView> resultCollection = null;
-                var p = new Problem(new State(3, 3, BoatState.Left, 0),
-                    new State(0, 0, BoatState.Right, 0));
+                //Do not use this approach in enterprise!.
+                StateFactory.SetNumberOfEach(NumberOfEach);
+                var p = new Problem(StateFactory.Make(NumberOfEach, NumberOfEach, BoatState.Left, 0),
+                    StateFactory.Make(0, 0, BoatState.Right, 0), BoatSize);
                 var result = Algorithm.UniformCostSearch(p, cancelToken);
                 if (result != null)
                 {

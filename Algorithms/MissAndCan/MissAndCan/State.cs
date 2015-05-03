@@ -13,7 +13,7 @@ namespace MissAndCan
     {
         private int nMiss, nCan;
         private BoatState _boatOnTheSide;
-        private const int NumOfEachAtStart = 3;
+        private static int NumOfEachAtStart = 3;
         private String _name;
         private State _prevState;
         private int stateLevel = 0;
@@ -70,13 +70,15 @@ namespace MissAndCan
         /// <param name="stateLevel"></param>
         /// <param name="Cost"></param>
         public State(int nMiss, int nCan, BoatState BoatOnTheSide,
-                    int stateLevel=0, int Cost=0):
-        this(nMiss, nCan, BoatOnTheSide, null, stateLevel, Cost)
+                    int stateLevel = 0, int NumOfEachAtStart = 3, 
+                    int Cost = 0):
+            this(nMiss, nCan, BoatOnTheSide, null, stateLevel, NumOfEachAtStart, Cost)
     {
         ;
     }
         public State(int nMiss, int nCan, BoatState BoatOnTheSide,
-                    State PrevState, int stateLevel=0, int Cost=0)
+                    State PrevState, int stateLevel = 0,
+                    int NumOfEachAtStart = 3, int Cost = 0)
         {
             this._name = Name;
             this.nMiss = nMiss;
@@ -87,6 +89,7 @@ namespace MissAndCan
             this._cost = Cost + 1;
             if(_prevState != null)
                 this._cost += this._prevState.Cost;
+            State.NumOfEachAtStart = NumOfEachAtStart;
         }
 
         public override string ToString()
@@ -133,8 +136,14 @@ namespace MissAndCan
 
         public int GetHashCode(State state)
         {
-            int hCode = state.Cannibals ^ state.Missionaries * 100 ^ state.BoatOnTheSide.GetHashCode() * 10000;
+            int hCode = state.Cannibals ^ state.Missionaries * 100 
+                ^ state.BoatOnTheSide.GetHashCode() * 10000;
             return hCode.GetHashCode();
+        }
+
+        public static void SetNumberOfEach(int number)
+        {
+            NumOfEachAtStart = number;
         }
     }
 
@@ -150,6 +159,36 @@ namespace MissAndCan
         {
             int hCode = state.Cannibals ^ state.Missionaries*100 ^ state.BoatOnTheSide.GetHashCode()*10000;
             return hCode.GetHashCode();
+        }
+    }
+
+    /// <summary>
+    /// It's education and we can use static Fabric.
+    /// Do not use this approach in enterprise
+    /// </summary>
+    public class StateFactory
+    {
+        private static int numberOfEach = 3;
+        public static int NumberOfEach
+        {
+            get { return numberOfEach; }
+            set { if (value > 0) numberOfEach = value; }
+        }
+        public static void SetNumberOfEach(int number)
+        {
+            if(number > 0) numberOfEach = number;
+        }
+
+        public static State Make(int nMiss, int nCan, BoatState BoatOnTheSide,
+                    int stateLevel=0, int Cost=0)
+        {
+            return new State(nMiss, nCan, BoatOnTheSide, stateLevel, numberOfEach, Cost);
+        }
+
+        public static State Make(int nMiss, int nCan, BoatState BoatOnTheSide,
+                    State PrevState, int stateLevel = 0, int Cost = 0)
+        {
+            return new State(nMiss, nCan, BoatOnTheSide, PrevState, stateLevel, numberOfEach, Cost);
         }
     }
 }

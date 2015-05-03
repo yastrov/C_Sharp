@@ -1,8 +1,9 @@
 ﻿<Window x:Class="MissAndCan.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="435.075" Width="425"
+        Title="MainWindow" Height="500.747" Width="453.0"
         WindowStartupLocation="CenterScreen"
+        xmlns:local="clr-namespace:MissAndCan"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Window.Resources>
         <Style TargetType="DataGridCell">
@@ -12,6 +13,7 @@
             <Setter Property="TextBlock.TextAlignment" Value="Center"/>
             <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
         </Style>
+        <local:StringToIntConverter x:Key="SToIConv"/>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -20,7 +22,7 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Margin="0,0,0,-51">
+        <StackPanel Margin="0,0,0,-79">
             <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" ScrollViewer.CanContentScroll="True" Width="auto">
             <Run FontSize="16" FontWeight="Bold">Missionaries and cannibals problem and UCS search.</Run>
                 <LineBreak/>
@@ -29,6 +31,32 @@
                 <LineBreak/>In this case, the boat can withstand only two.
                 <LineBreak/>You can not leave on one side of the missionaries less than cannibals.
             </TextBlock>
+            <Grid HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Number of each:"
+                       Grid.Column="0"
+                       Grid.Row="0"/>
+                <Label Content="Size of the boat:"
+                       Grid.Column="0"
+                       Grid.Row="1"/>
+                <TextBox Text="{Binding NumberOfEach, Converter={StaticResource SToIConv}}"
+                         HorizontalContentAlignment="Center"
+                         Width="45"
+                         Grid.Column="1"
+                         Grid.Row="0" Height="26" VerticalAlignment="Top"/>
+                <TextBox Text="{Binding BoatSize, Converter={StaticResource SToIConv}}"
+                         HorizontalContentAlignment="Center"
+                         Width="45"
+                         Grid.Column="1"
+                         Grid.Row="1"/>
+            </Grid>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"> 
             <Button Content="Calculate"
@@ -43,10 +71,10 @@
                 Width="75"
                 Margin="3,2,1,2"/>
             </StackPanel>
+            <ScrollViewer>
             <DataGrid ItemsSource="{Binding Combinations}"
                   AutoGenerateColumns="False"
                   CanUserAddRows="False"
-
                   HorizontalContentAlignment="Center">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="#"
@@ -75,6 +103,7 @@
                                     Binding="{Binding Path=CannibalsRight}"/>
                 </DataGrid.Columns>
             </DataGrid>
+            </ScrollViewer>
         </StackPanel>
     </Grid>
 </Window>

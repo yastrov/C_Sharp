@@ -34,9 +34,17 @@ namespace MissAndCan
         }
         public Problem(State InitialState, State FinishState, int BoatSize = 2)
         {
-            _initialState = InitialState;
-            _finishState = FinishState;
+            if (InitialState.IsValidState())
+                _initialState = InitialState;
+            else
+                throw new Exception("Initial state is not valid!");
+            if(FinishState.IsValidState())
+                _finishState = FinishState;
+            else
+                throw new Exception("Finish state is not valid!");
             _boatSize = BoatSize;
+            if(BoatSize <= 1)
+                throw new Exception("Boat is very small!");
         }
         public bool IsGoal(State state)
         {
@@ -60,7 +68,7 @@ namespace MissAndCan
                     if (nMiss + nCan > _boatSize)
                         break;
                     var BoatDirection = state.BoatOnTheSide.AsMultiplier();
-                    var s = new State(
+                    var s = StateFactory.Make(
                         state.Missionaries + nMiss * BoatDirection,
                         state.Cannibals + nCan * BoatDirection,
                         state.BoatOnTheSide.Inverse(),
