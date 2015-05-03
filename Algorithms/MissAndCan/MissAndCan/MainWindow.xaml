@@ -29,12 +29,20 @@
                 <LineBreak/>In this case, the boat can withstand only two.
                 <LineBreak/>You can not leave on one side of the missionaries less than cannibals.
             </TextBlock>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"> 
             <Button Content="Calculate"
                 Click="StartButtoCllick"
-                HorizontalAlignment="Center"
                 IsEnabled="{Binding IsEnabled}"
                 VerticalAlignment="Top"
-                Width="75"/>
+                Width="75"
+                    Margin="1,2,3,2"/>
+            <Button Content="Cancel"
+                Click="CancelButtoCllick"
+                VerticalAlignment="Top"
+                Width="75"
+                Margin="3,2,1,2"/>
+            </StackPanel>
             <DataGrid ItemsSource="{Binding Combinations}"
                   AutoGenerateColumns="False"
                   CanUserAddRows="False"
