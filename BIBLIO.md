@@ -70,9 +70,15 @@
 -  [Fabio Pintos How to properly convert SecureString to String](http://blogs.msdn.com/b/fpintos/archive/2009/06/12/how-to-properly-convert-securestring-to-string.aspx)
 -  Dependency property [http://habrahabr.ru/post/149835/](http://habrahabr.ru/post/149835/)
 -  Guidlines (recommendation) [https://msdn.microsoft.com/en-us/library/windows/apps/hh465465.aspx](https://msdn.microsoft.com/en-us/library/windows/apps/hh465465.aspx)
+-  Work with WinAPI [pinvoke.net](http://pinvoke.net)
 
 -  [.NET Fiddle](https://dotnetfiddle.net/)
 -  [http://referencesource.microsoft.com/](http://referencesource.microsoft.com/)
+
+## SQLite ORM
+-  Article [https://bitbucket.org/twincoders/sqlite-net-extensions](https://bitbucket.org/twincoders/sqlite-net-extensions)
+-  Recommended SQLite.Net-PCL and SQLite.Net.Async-PCL [https://github.com/oysteinkrog/SQLite.Net-PCL](https://github.com/oysteinkrog/SQLite.Net-PCL)
+
 
 ## Github projects
 -  Simple, powerful, cross-platform SQLite client and ORM [sqlite-net](https://github.com/praeclarum/sqlite-net)
