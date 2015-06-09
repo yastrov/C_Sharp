@@ -155,13 +155,24 @@ namespace OperatorOverloadTest
 
         #region converters operator
         /// <summary>
-        /// (string)
+        /// Явное приведение типа
+        /// string s = (string)myObj;
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public static explicit operator string(MyPoint obj)
         {
             return String.Format("Coord x: {0} y: {1}", obj.X, obj.Y);
+        }
+        /// <summary>
+        /// Неявное приведение типа
+        /// double length = myObj;
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static implicit operator double(MyPoint obj)
+        {
+            return Math.Sqrt(obj.X*obj.X + obj.Y*obj.Y);
         }
         #endregion
         public override string ToString()
@@ -214,6 +225,7 @@ hash = (hash * 7) + y.GetHashCode();
             MyPoint p2 = new MyPoint(x: -1, y: -2);
             Console.WriteLine("p1 == p2 : {0}", p1 == p2);
             Console.WriteLine("p1.CompareTo(p2) : {0}", p1.CompareTo(p2));
+            double d = p1;
         }
     }
 }
