@@ -78,7 +78,7 @@ namespace ProgressTest
                         onProgressPercentChanged.Report(i / 10);
                         cancellationToken.ThrowIfCancellationRequested();
                     }
-            });
+            },cancellationToken);
         }
 
         private async void Start_Button1_Click(object sender, RoutedEventArgs e)
